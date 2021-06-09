@@ -32,13 +32,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  var colors = [Colors.indigo, Colors.deepOrangeAccent, Colors.amber, Colors.lightGreen, Colors.blue];
-  var images = ['images/burger_icon.png', 'images/hotdog_icon.png', 'images/sandwich_icon.png', 'images/pizza_icon.png', 'images/cake_icon.png'];
+  var colors = [Color.fromRGBO(255, 233, 198, 1), Color.fromRGBO(194, 227, 254, 1), Color.fromRGBO(215, 250, 218, 1), Color.fromRGBO(253, 214, 213, 1), Color.fromRGBO(199, 184, 243, 1)];
+  var images = ['images/burger.png', 'images/hotdog.png', 'images/sandwich.png', 'images/pizza.png', 'images/fries.png'];
   var titles = ['Featured', 'News', 'Best sellers', 'Most popular', 'In promotion'];
-  var namesFood = ['Hamburger', "Hot-dogs", "Sandwich", "Pizza", "Cake"];
+  var namesFood = ['Hamburger', "Hot-dogs", "Sandwich", "Pizza", "Frites"];
 
-  var burgers = ['images/burger1.png', 'images/burger2.png', 'images/burger3.png', 'images/burger4.png'];
-  var burgers_name = ['The Classic Phoenix Burger', 'The Yagoo Burger', 'The Kitten Special', 'Cheese Burger'];
+  var burgers_name = ['Delicious burger', 'Delicious hotdog', 'Delicious sandwich', 'Delicious pizza', 'Delicious fries'];
 
   List<Widget> randomStars() {
     var random = new Random();
@@ -74,17 +73,20 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Kiara Fried Phoenix"),
         leading: Container(
           child: Icon(
             Icons.menu,  // add custom icons also
           ),
         ),
+        backgroundColor: Colors.white,
         actions: <Widget>[
           Padding(
               padding: EdgeInsets.only(right: 20.0),
               child: Container(
-                child: Image.asset('images/kiara_avatar.png'),
+                child: CircleAvatar(
+                  child: Image.asset('images/tuxedo.png', height: 32),
+                  backgroundColor: Color.fromRGBO(198, 231, 254, 1),
+                ),
               )
           )
         ],
@@ -93,13 +95,25 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: EdgeInsets.all(20.0),
         child: Column(
           children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(bottom: 20.0),
+            Align(
+              alignment: Alignment.centerLeft,
               child: Text(
-                "SEARCH FOR RECIPES :",
-                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+                "SEARCH FOR",
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
               ),
             ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "RECIPES",
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 20.0),
+
+            ),
+
             Padding(
               padding: EdgeInsets.only(bottom: 20.0),
               child: TextField(
@@ -138,19 +152,29 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         child: Column(
                           children: <Widget>[
-                            Align(
-                              alignment: Alignment.center,
-                              child: Padding(
-                                padding: EdgeInsets.only(bottom: 10, top: 30),
-                                child: Image.asset(
-                                  images[position],
-                                  width: 60,
-                                  height: 60
-                                )
+                            Padding(
+                              padding: EdgeInsets.only(top: 10.0),
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Padding(
+                                  padding: EdgeInsets.only(bottom: 10, top: 30),
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.white,
+                                    radius: 30,
+                                    child: Image.asset(
+                                      images[position],
+                                      height: 40,
+                                      width: 40
+                                    ),
+                                  )
+                                ),
                               ),
                             ),
-                            Align(
-                              child: Text(namesFood[position]),
+                            Padding(
+                              padding: EdgeInsets.only(top: 30.0),
+                              child: Align(
+                                child: Text(namesFood[position]),
+                              ),
                             ),
                             Align(
                               child: Text(randomPrices(25).toString() + "\$"),
@@ -201,10 +225,19 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: <Widget>[
                         Column(
                           children: <Widget>[
-                            Image.asset(
-                              burgers[position],
-                              width: 50,
-                              height: 50,
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: Color.fromRGBO(255, 227, 223, 1),
+                                  borderRadius: BorderRadius.circular(10)
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Image.asset(
+                                  images[position],
+                                  width: 50,
+                                  height: 50,
+                                ),
+                              ),
                             ),
                           ],
                         ),
@@ -256,10 +289,10 @@ class _MyHomePageState extends State<MyHomePage> {
                               child: FloatingActionButton(
                                 onPressed: (){},
                                 backgroundColor: Colors.deepOrangeAccent,
-                                child: Icon(Icons.add, color: Colors.white,)
+                                child: Icon(Icons.add, color: Colors.white)
                               ),
-                              width: 40,
-                              height: 40,
+                              width: 32,
+                              height: 32,
                             ),
                           ],
                         ),
